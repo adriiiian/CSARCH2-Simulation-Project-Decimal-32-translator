@@ -1,0 +1,25 @@
+{
+  "name": "csarch2-simulation-project-decimal-32-translator",
+  "version": "1.0.0",
+  "description": "CSARCH2-Simulation Project-Decimal-32 translator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriiiian/CSARCH2-Simulation-Project-Decimal-32-translator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriiiian/CSARCH2-Simulation-Project-Decimal-32-translator/issues"
+  },
+  "homepage": "https://github.com/adriiiian/CSARCH2-Simulation-Project-Decimal-32-translator#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
