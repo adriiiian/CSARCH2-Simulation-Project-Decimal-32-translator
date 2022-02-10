@@ -42,48 +42,112 @@ $(document).ready(function(){
                 formInfo.CoefficientContinuation1 = parseInt(formInfo.CoefficientContinuation1);
                 formInfo.CoefficientContinuation2 = parseInt(formInfo.CoefficientContinuation2);
 
-                var msd, exp;
+                var msd, exp, coefcont1, coefcont2, final;
 
                 if(Math.floor(formInfo.CombinationField / 1000) == 11){
-                    msd = parseInt((1000 + formInfo.CombinationField % 10), 2);
+                    msd = parseInt((1000 + formInfo.CombinationField % 10), 2) * 1000000;
                     exp = parseInt((Math.floor(Math.floor(formInfo.CombinationField % 1000) / 10) * 1000000 + formInfo.ExponentContinuation),2) - 101;
-                    console.log("msd: " + msd);
-                    console.log("exp: " + exp);
+                    coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
+                    coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
+                    final = msd + coefcont1 + coefcont2;
+                    // console.log(final)
                 }
                 else{
-                    console.log("not 11")
-                    console.log(formInfo.CombinationField / 1000)
+                    msd = parseInt((formInfo.CombinationField % 1000), 2) * 1000000;
+                    exp = parseInt((Math.floor(formInfo.CombinationField / 1000) * 1000000 + formInfo.ExponentContinuation), 2) - 101;
+                    coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
+                    coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
+                    final = msd + coefcont1 + coefcont2;
+                    console.log(exp)
                 }
-                $('#output').text('Hello')
+
+                if(formInfo.Signbit == 1){
+                    final = final * -1;
+                }
+                $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
             }
         }
 
+        function getDecPackedBCD(bcd){
+            var dig1, dig2, dig3, final = 0;
+            if(Math.floor((bcd % 10000) / 1000) == 1){
+                if(Math.floor((bcd % 1000)/10) == 0){
+                    dig1 = parseInt(Math.floor(bcd / 10000000), 2);
+                    dig2 = parseInt((Math.floor(bcd / 10000) % 1000), 2);
+                    dig3 = 8 + parseInt(Math.floor(bcd % 1000), 2);
+                }
+                else if(Math.floor((bcd % 1000)/10) == 01){
+                    dig1 = parseInt(Math.floor(bcd / 10000000), 2);
+                    dig2 = 8 + parseInt((Math.floor(bcd / 10000) % 10), 2);
+                    dig3 = parseInt((Math.floor((Math.floor(bcd / 10000) % 1000) / 10) * 10) + Math.floor(bcd % 10), 2)
+
+                }
+                else if(Math.floor((bcd % 1000)/10) == 10){
+                    dig1 = 8 + parseInt((Math.floor(bcd / 10000000) % 10), 2);
+                    dig2 = parseInt((Math.floor(bcd / 10000) % 1000), 2);
+                    dig3 = parseInt(Math.floor(bcd / 100000000) * 10 + Math.floor(bcd % 10), 2);
+                }
+                else if(Math.floor((bcd % 1000)/10) == 11){
+                    if(Math.floor((Math.floor(bcd / 10000) % 1000)/10) == 0){
+                        dig1 = 8 + parseInt((Math.floor(bcd / 10000000) % 10), 2);
+                        dig2 = 8 + parseInt((Math.floor(bcd / 10000) % 10), 2);
+                        dig3 = parseInt(Math.floor(bcd / 100000000) * 10 + Math.floor(bcd % 10), 2)
+                    }
+                    else if(Math.floor((Math.floor(bcd / 10000) % 1000)/10) == 01){
+                        dig1 = 8 + parseInt((Math.floor(bcd / 10000000) % 10), 2);
+                        dig2 = parseInt(((Math.floor(bcd / 10000000) / 10) * 10 + Math.floor(bcd / 10000) % 10), 2);
+                        dig3 = 8 + parseInt(Math.floor(bcd % 1000) % 10);
+                    }
+                    else if(Math.floor((Math.floor(bcd / 10000) % 1000)/10) == 10){
+                        dig1 = parseInt(Math.floor(bcd / 10000000), 2);
+                        dig2 = 8 + parseInt((Math.floor(bcd / 10000) % 10), 2);
+                        dig3 = 8 + parseInt(Math.floor(bcd % 1000) % 10);
+                    }
+                    else if(Math.floor((Math.floor(bcd / 10000) % 1000)/10) == 11){
+                        dig1 = 8 + parseInt((Math.floor(bcd / 10000000) % 10), 2);
+                        dig2 = 8 + parseInt((Math.floor(bcd / 10000) % 10), 2);
+                        dig3 = 8 + parseInt(Math.floor(bcd % 1000) % 10);
+                    }
+                    // console.log(Math.floor((Math.floor(bcd / 1000) % 100) / 10));
+                    // console.log(Math.floor((Math.floor(bcd / 10000) % 1000)/10));
+                }
+                final = (dig1 * 100) + (dig2 * 10) + dig3;
+                // console.log(final);
+            }
+            else{
+                dig1 = parseInt(Math.floor(bcd / 10000000), 2);
+                dig2 = parseInt((Math.floor(bcd / 10000) % 1000), 2);
+                dig3 = parseInt(Math.floor(bcd % 1000), 2);
+                final = (dig1 * 100) + (dig2 * 10) + dig3;
+            }
+            return final; 
+        }
         
     });
 
     /* Disabling inputs that is not equal to 1 or 0 */
     document.getElementById('input_sb').addEventListener('keydown', function(e){
-        if(e.key != 0 && e.key != 1){
+        if(e.key != 0 && e.key != 1 && e.key != "Backspace"){
             e.preventDefault();
         };
     });
     document.getElementById('input_cf').addEventListener('keydown', function(e){
-        if(e.key != 0 && e.key != 1){
+        if(e.key != 0 && e.key != 1 && e.key != "Backspace"){
             e.preventDefault();
         };
     });
     document.getElementById('input_ec').addEventListener('keydown', function(e){
-        if(e.key != 0 && e.key != 1){
+        if(e.key != 0 && e.key != 1 && e.key != "Backspace"){
             e.preventDefault();
         };
     })
     document.getElementById('input_cc1').addEventListener('keydown', function(e){
-        if(e.key != 0 && e.key != 1){
+        if(e.key != 0 && e.key != 1 && e.key != "Backspace"){
             e.preventDefault();
         };
     })
     document.getElementById('input_cc2').addEventListener('keydown', function(e){
-        if(e.key != 0 && e.key != 1){
+        if(e.key != 0 && e.key != 1 && e.key != "Backspace"){
             e.preventDefault();
         };
     })
