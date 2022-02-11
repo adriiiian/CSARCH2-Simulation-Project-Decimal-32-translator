@@ -14,15 +14,20 @@
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+        <script src="./js/FileSaver.js"></script>
         
         
     </head>
     <body>
-        
+        <div class="header_title">Decimal-32 Calculator </div>
         <div class="calculator_cont">
-            <div class="header_title">Decimal-32 Calculator </div>
-            <div class="inputdiv">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-rooms-tab" data-toggle="tab" href="#32bitdiv" role="tab" aria-controls="nav-rooms" aria-selected="true">32-Bit Binary Input</a>
+                <a class="nav-item nav-link" id="nav-reservations-tab" data-toggle="tab" href="#8hexdiv" role="tab" aria-controls="nav-reservations" aria-selected="false">8-Digit Hex Input</a>
+                
+            </div>
+            
+            <div class="inputdiv" id="32bitdiv">
                 
                 <form id="form_binary" onsubmit="return false;" autocomplete="off">
                     <div class="inputdiv">
@@ -52,11 +57,30 @@
                     </div>
     
                     <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
-                    <button class="btn waves-effect waves-light" id="submit_btn" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light" id="submit_btn_bin" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                       </button>
-                    <p id="error_message" class="text-danger h5">Invalid input</p>
+                    <p id="error_message_hex" class="text-danger h5">Invalid input</p>
                 </form>
+                <button class="waves-effect waves-light btn" id="download_btn_bin"><i class="material-icons right">cloud</i>download</button>
+            
+            </div>
+
+            <div class="inputdiv" id="8hexdiv">
+                
+                <form id="form_hex" onsubmit="return false;" autocomplete="off">
+                    <div class="inputdiv">
+                        <label class="labels" for="input_hex">Hex Digit</label>
+                        <br>
+                        <input id="input_hex" type="text" class="inputs" maxlength="8" placeholder="Hex bit" value="0">
+                    </div>
+                    <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
+                    <button class="btn waves-effect waves-light" id="submit_btn_hex" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                      </button>
+                    <p id="error_message_hex" class="text-danger h5">Invalid input</p>
+                </form>
+                <button class="waves-effect waves-light btn" id="download_btn_hex"><i class="material-icons right">cloud</i>download</button>
             </div>
         
         
@@ -64,6 +88,21 @@
             <label class="labels" for="output" style="font-weight: bold;">Decimal 32 Floating Point</label>
             <p id="output">0</p>
         </div>
-        </div>
+        <script type="text/javascript">
+            download_btn.onclick = function(){
+                let download_btn = document.getElementById('download_btn');
+                let bit32div = document.getElementById('32bitdiv');
+                let signbit = $('#input_sb').val();
+                let combifield = $('#input_cf').val();
+                let expocont = $('#input_ec').val();
+                let coefcont1 = $('#input_cc1').val();
+                let coefcont2 = $('#input_cc2').val();
+                let output = $('#output').val();
+                var blob = new Blob(["32-bit binary input to Decimal 32 floating point", "\n\n", "Sign bit: " + signbit, "\n", "Combination Field: " + combifield
+            , "\n", "Exponeent Continuation: " + expocont, "\n", "Coefficient Continuation 1: " + coefcont1, "\n", "Coefficient Continuation 2: " + coefcont2,
+            "\n\n", "Decimal 32 Floating Point: " + output], {type: 'text/plain;charset=utf-8'});
+                saveAs(blob, "decimal-32-floating-point-translator.txt");
+            }
+        </script>
     </body>
 </html>
