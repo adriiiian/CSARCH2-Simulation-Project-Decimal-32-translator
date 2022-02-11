@@ -11,7 +11,6 @@ label{
 .inputdiv{
     min-width: 80%;
     min-height: 80%;
-    background-color:floralwhite;
     margin-left: 30px;
     margin-right: 30px;
 
@@ -22,6 +21,7 @@ label{
     margin-left: 10px;
     margin-right: 10px;
     
+    
 }
 
 .header_title{
@@ -29,6 +29,7 @@ label{
     font-size: 25px;
     font-style:italic;
     font-weight: bold;
+    text-align: center;
 }
 
 .inputs{
@@ -47,9 +48,8 @@ label{
 }
 
 #submit_btn_bin{
-    margin-top: 10px;
-    font-size: 24px;
-    background-color: grey;
+   
+    margin: auto;
 }
 
 #output{
