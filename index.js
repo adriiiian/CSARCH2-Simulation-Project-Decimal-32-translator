@@ -19,6 +19,6 @@ app.use(express.static('public'))
 
 app.use(router)
   
-app.listen(_Port, _Host, () => {
-    console.log('Server is running at http://' + _Host + ':' + _Port)
-})
+app.listen(_Port, () => {
+    console.log('Server is running at port ${ _Port }')
+  })
