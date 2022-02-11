@@ -96,10 +96,19 @@
     <div class="ans_card row">
         <div class="col s12 m6">
         <div class="card teal lighten-2">
-            <div class="card-content white-text">
+            <div style="display:flex" id="answer_container" class="card-content white-text">
                 <div class="outputdiv" style="margin:0;">
                     <p class="ans_label">Answer:</p>
                     <p id="output">0</p>
+                </div>
+                <div class="output_select" >
+                    <p class="ans_label">Format</p>
+                    <select class="browser-default" >
+                      <option value="1">Fixed Decimal</option>
+                      <option value="2">Floating Point</option>
+                    </select>
+                  </div>
+                
                 </div>
             </div>
         </div>

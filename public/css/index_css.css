@@ -15,10 +15,14 @@ label {
 	margin-right: 30px;
 }
 .outputdiv {
-	min-width: 40%;
-	min-height: 40%;
+	width: 650px;
 	margin-left: 30px;
 	margin-right: 30px;
+}
+
+.output_select {
+    width: 300px;
+    
 }
 
 .container {
@@ -129,4 +133,8 @@ label {
 	font-weight: bold;
 	padding-top: 2%;
 	padding-bottom: 5px;
+}
+
+#answer_container{
+    orientation: landscape;
 }
