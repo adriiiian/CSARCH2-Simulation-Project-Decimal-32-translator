@@ -6,45 +6,64 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>Hello World Simple App</title>
         <script src="./js/index.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+         <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        
         
     </head>
     <body>
-        <div class="inputdiv">
-            <form id="form_binary" onsubmit="return false;" autocomplete="off">
-                <div class="inputdiv">
-                    <label class="labels" for="input_sb">Sign Bit</label>
-                    <br>
-                    <input id="input_sb" type="text" class="inputs" maxlength="1" placeholder="Sign bit" value="0">
-                </div>
-                <div class="inputdiv">
-                    <label class="labels" for="input_cf">Combination Field</label>
-                    <br>
-                    <input id="input_cf" type="text" name="inputs" class="inputs" placeholder="Combination Field" maxlength="5" value="01001">
-                </div>
-                <div class="inputdiv">
-                    <label class="labels" for="input_ec">Exponent Continuation</label>
-                    <br>
-                    <input id="input_ec" type="text" name="inputs" class="inputs" placeholder="Exponent Continuation" maxlength="6" value="110100">
-                </div>
-                <div class="inputdiv">
-                    <label class="labels" for="input_cc1">Coefficient Continuation 1</label>
-                    <br>
-                    <input id="input_cc1" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 1" maxlength="10" value="0001101011">
-                </div>
-                <div class="inputdiv">
-                    <label class="labels" for="input_cc2">Coefficient Continuation 2</label>
-                    <br>
-                    <input id="input_cc2" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 2" maxlength="10" value="1011000110">
-                </div>
-
-                <button id="submit_btn" type="submit">Calculate</button>
-
-                <p id="error_message" class="text-danger h5">Invalid input</p>
-            </form>
-        </div>
+        
+        <div class="calculator_cont">
+            <div class="header_title">Decimal-32 Calculator </div>
+            <div class="inputdiv">
+                
+                <form id="form_binary" onsubmit="return false;" autocomplete="off">
+                    <div class="inputdiv">
+                        <label class="labels" for="input_sb">Sign Bit</label>
+                        <br>
+                        <input id="input_sb" type="text" class="inputs" maxlength="1" placeholder="Sign bit" value="0">
+                    </div>
+                    <div class="inputdiv">
+                        <label class="labels" for="input_cf">Combination Field</label>
+                        <br>
+                        <input id="input_cf" type="text" name="inputs" class="inputs" placeholder="Combination Field" maxlength="5" value="01001">
+                    </div>
+                    <div class="inputdiv">
+                        <label class="labels" for="input_ec">Exponent Continuation</label>
+                        <br>
+                        <input id="input_ec" type="text" name="inputs" class="inputs" placeholder="Exponent Continuation" maxlength="6" value="110100">
+                    </div>
+                    <div class="inputdiv">
+                        <label class="labels" for="input_cc1">Coefficient Continuation 1</label>
+                        <br>
+                        <input id="input_cc1" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 1" maxlength="10" value="0001101011">
+                    </div>
+                    <div class="inputdiv">
+                        <label class="labels" for="input_cc2">Coefficient Continuation 2</label>
+                        <br>
+                        <input id="input_cc2" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 2" maxlength="10" value="1011000110">
+                    </div>
+    
+                    <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
+                    <button class="btn waves-effect waves-light" id="submit_btn" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                      </button>
+                    <p id="error_message" class="text-danger h5">Invalid input</p>
+                </form>
+            </div>
+        
+        
         <div class="outputdiv" style="margin-top: 25px;">
             <label class="labels" for="output" style="font-weight: bold;">Decimal 32 Floating Point</label>
             <p id="output">0</p>
+        </div>
         </div>
     </body>
 </html>
