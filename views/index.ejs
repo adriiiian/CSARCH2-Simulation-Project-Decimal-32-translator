@@ -10,78 +10,81 @@
          <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="./js/FileSaver.js"></script>
-        
-        
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="header_title">Decimal-32 Calculator </div>
-        <div class="calculator_cont">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-rooms-tab" data-toggle="tab" href="#32bitdiv" role="tab" aria-controls="nav-rooms" aria-selected="true">32-Bit Binary Input</a>
-                <a class="nav-item nav-link" id="nav-reservations-tab" data-toggle="tab" href="#8hexdiv" role="tab" aria-controls="nav-reservations" aria-selected="false">8-Digit Hex Input</a>
+        <div class="container pt-5 pb-4">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="bittab" data-toggle="tab" href="#bitdiv" role="tab" aria-controls="bitdiv" aria-selected="true">32-Bit Binary Input</a>
+                    <a class="nav-item nav-link" id="hextab" data-toggle="tab" href="#hexdiv" role="tab" aria-controls="hexdiv" aria-selected="false">8-Digit Hex Input</a>
+                </div>
+            </nav>
+            <div class="tab-content py-4" id="nav-tabContent">
+                <div class="tab-content py-4" id="bitdiv" role="tabpanel" aria-labelledby="bittab">
                 
-            </div>
-            
-            <div class="inputdiv" id="32bitdiv">
+                    <form id="form_binary" onsubmit="return false;" autocomplete="off">
+                        <div class="inputdiv">
+                            <label class="labels" for="input_sb">Sign Bit</label>
+                            <br>
+                            <input id="input_sb" type="text" class="inputs" maxlength="1" placeholder="Sign bit" value="0">
+                        </div>
+                        <div class="inputdiv">
+                            <label class="labels" for="input_cf">Combination Field</label>
+                            <br>
+                            <input id="input_cf" type="text" name="inputs" class="inputs" placeholder="Combination Field" maxlength="5" value="01001">
+                        </div>
+                        <div class="inputdiv">
+                            <label class="labels" for="input_ec">Exponent Continuation</label>
+                            <br>
+                            <input id="input_ec" type="text" name="inputs" class="inputs" placeholder="Exponent Continuation" maxlength="6" value="110100">
+                        </div>
+                        <div class="inputdiv">
+                            <label class="labels" for="input_cc1">Coefficient Continuation 1</label>
+                            <br>
+                            <input id="input_cc1" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 1" maxlength="10" value="0001101011">
+                        </div>
+                        <div class="inputdiv">
+                            <label class="labels" for="input_cc2">Coefficient Continuation 2</label>
+                            <br>
+                            <input id="input_cc2" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 2" maxlength="10" value="1011000110">
+                        </div>
+        
+                        <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
+                        <button class="btn waves-effect waves-light" id="submit_btn_bin" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                          </button>
+                        <p id="error_message_binary" class="text-danger h5">Invalid input</p>
+                    </form>
+                    <button class="waves-effect waves-light btn" id="download_btn_bin"><i class="material-icons right">cloud</i>download</button>
                 
-                <form id="form_binary" onsubmit="return false;" autocomplete="off">
-                    <div class="inputdiv">
-                        <label class="labels" for="input_sb">Sign Bit</label>
-                        <br>
-                        <input id="input_sb" type="text" class="inputs" maxlength="1" placeholder="Sign bit" value="0">
-                    </div>
-                    <div class="inputdiv">
-                        <label class="labels" for="input_cf">Combination Field</label>
-                        <br>
-                        <input id="input_cf" type="text" name="inputs" class="inputs" placeholder="Combination Field" maxlength="5" value="01001">
-                    </div>
-                    <div class="inputdiv">
-                        <label class="labels" for="input_ec">Exponent Continuation</label>
-                        <br>
-                        <input id="input_ec" type="text" name="inputs" class="inputs" placeholder="Exponent Continuation" maxlength="6" value="110100">
-                    </div>
-                    <div class="inputdiv">
-                        <label class="labels" for="input_cc1">Coefficient Continuation 1</label>
-                        <br>
-                        <input id="input_cc1" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 1" maxlength="10" value="0001101011">
-                    </div>
-                    <div class="inputdiv">
-                        <label class="labels" for="input_cc2">Coefficient Continuation 2</label>
-                        <br>
-                        <input id="input_cc2" type="text" name="inputs" class="inputs" placeholder="Coefficient Continuation 2" maxlength="10" value="1011000110">
-                    </div>
+                </div>
     
-                    <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
-                    <button class="btn waves-effect waves-light" id="submit_btn_bin" type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                      </button>
-                    <p id="error_message_hex" class="text-danger h5">Invalid input</p>
-                </form>
-                <button class="waves-effect waves-light btn" id="download_btn_bin"><i class="material-icons right">cloud</i>download</button>
+                <div class="tab-pane fade" id="hexdiv" role="tabpanel" aria-labelledby="hextab">
+                    
+                    <form id="form_hex" onsubmit="return false;" autocomplete="off">
+                        <div class="inputdiv">
+                            <label class="labels" for="input_hex">Hex Digit</label>
+                            <br>
+                            <input id="input_hex" type="text" class="inputs" maxlength="8" placeholder="Hex bit" value="0">
+                        </div>
+    
+                        <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
+                        <button class="btn waves-effect waves-light" id="submit_btn_hex" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                          </button>
+                        <p id="error_message_hex" class="text-danger h5">Invalid input</p>
+                    </form>
+                    <button class="waves-effect waves-light btn" id="download_btn_hex"><i class="material-icons right">cloud</i>download</button>
+                </div>
+            </div>
             
-            </div>
-
-            <div class="inputdiv" id="8hexdiv">
-                
-                <form id="form_hex" onsubmit="return false;" autocomplete="off">
-                    <div class="inputdiv">
-                        <label class="labels" for="input_hex">Hex Digit</label>
-                        <br>
-                        <input id="input_hex" type="text" class="inputs" maxlength="8" placeholder="Hex bit" value="0">
-                    </div>
-                    <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
-                    <button class="btn waves-effect waves-light" id="submit_btn_hex" type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                      </button>
-                    <p id="error_message_hex" class="text-danger h5">Invalid input</p>
-                </form>
-                <button class="waves-effect waves-light btn" id="download_btn_hex"><i class="material-icons right">cloud</i>download</button>
-            </div>
         
         
         <div class="outputdiv" style="margin-top: 25px;">
@@ -89,8 +92,9 @@
             <p id="output">0</p>
         </div>
         <script type="text/javascript">
+            let download_btn = document.getElementById('download_btn_bin');
             download_btn.onclick = function(){
-                let download_btn = document.getElementById('download_btn');
+                
                 let bit32div = document.getElementById('32bitdiv');
                 let signbit = $('#input_sb').val();
                 let combifield = $('#input_cf').val();

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#error_message').hide();
+    $('#error_message_binary').hide();
 
     $('#form_binary').submit(async function(){
         var formInfo = {
@@ -21,11 +21,11 @@ $(document).ready(function(){
         if(formInfo.Signbit.length != 1 || formInfo.CombinationField.length != 5 || formInfo.ExponentContinuation.length != 6 || 
             formInfo.CoefficientContinuation1.length != 10 || formInfo.CoefficientContinuation2.length != 10){
             console.log(formInfo.CoefficientContinuation1.length)
-            $('#error_message').show();
-            $('#error_message').text("Please input properly!")
+            $('#error_message_binary').show();
+            $('#error_message_binary').text("Please input properly!")
         }
         else{
-            $('#error_message').hide();
+            $('#error_message_binary').hide();
             /* Infinity if Combination Field is equal to 11110 - Special case*/
             if(formInfo.CombinationField == "11110"){
                 $('#output').text("Infinity");
