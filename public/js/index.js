@@ -87,6 +87,7 @@ $(document).ready(function(){
                 }
                 $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
                 $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
+                $('#output_format').val(1);
             }
         }
         
@@ -171,6 +172,7 @@ $(document).ready(function(){
                 }
                 $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
                 $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
+                $('#output_format').val(1);
             }
         }
     });
