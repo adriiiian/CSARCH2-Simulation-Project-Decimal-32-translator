@@ -85,8 +85,8 @@ $(document).ready(function(){
                 else if(coefcont2 == 0){
                     final = final / 1000;
                 }
-                $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
-                $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
+                $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
+                $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
             }
         }
         
@@ -157,10 +157,6 @@ $(document).ready(function(){
                     coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
                     coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
                     final = msd + coefcont1 + coefcont2;
-                    // console.log(msd);
-                    // console.log(exp);
-                    // console.log(coefcont1 / 1000);
-                    // console.log(coefcont2);
                 }
 
                 if(formInfo.Signbit == 1){
@@ -173,15 +169,9 @@ $(document).ready(function(){
                 else if(coefcont2 == 0){
                     final = final / 1000;
                 }
-                $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
-                $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
+                $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
+                $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
             }
-
-            // console.log(formInfo.Signbit)
-            // console.log(formInfo.CombinationField);
-            // console.log(formInfo.ExponentContinuation);
-            // console.log(formInfo.CoefficientContinuation1);
-            // console.log(formInfo.CoefficientContinuation2);
         }
     });
 

@@ -95,8 +95,8 @@
         </div>
         
         <script type="text/javascript">
-            let download_btn = document.getElementById('download_btn_bin');
-            download_btn.onclick = function(){
+            let download_btn_bin = document.getElementById('download_btn_bin');
+            download_btn_bin.onclick = function(){
                 
                 let bit32div = document.getElementById('bitdiv');
                 let signbit = $('#input_sb').val();
@@ -108,9 +108,17 @@
                 var blob = new Blob(["32-bit binary input to Decimal 32 floating point", "\n\n", "Sign bit: " + signbit, "\n", "Combination Field: " + combifield
             , "\n", "Exponeent Continuation: " + expocont, "\n", "Coefficient Continuation 1: " + coefcont1, "\n", "Coefficient Continuation 2: " + coefcont2,
             "\n\n", "Decimal 32 Floating Point: " + output], {type: 'text/plain;charset=utf-8'});
-                saveAs(blob, "decimal-32-floating-point-translator.txt");
+                saveAs(blob, "decimal-32-floating-point-translator-32-bit-input.txt");
             }
 
+            let download_btn_hex = document.getElementById('download_btn_hex');
+            download_btn_hex.onclick = function(){
+                let hexdigit = $('#input_hex').val();
+                let output = $('#output').val();
+                var blob = new Blob(["8-digit hex input to Decimal 32 floating point", "\n\n", "Hex Digit: " + hexdigit, "\n\n", "Decimal 32 Floating Point: " + output],
+                {type: 'text/plain;charset=utf-8'});
+                saveAs(blob, "decimal-32-floating-point-translator-8-hex-input.txt");
+            }
             function bit32(){
                 let bittab = $('#bit-tab');
                 let hextab = $('#hex-tab');
