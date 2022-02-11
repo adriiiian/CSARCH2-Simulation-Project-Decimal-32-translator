@@ -19,7 +19,7 @@
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="header_title">Decimal-32 Calculator </div>
+        <div class="header_title">Decimal-32 Floating Point Translator </div>
         <div class="container pt-5 pb-4">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -57,12 +57,12 @@
                         </div>
         
                         <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
-                        <button class="btn waves-effect waves-light" id="submit_btn_bin" type="submit" name="action">Submit
+                        <div class="button_wrapper"><button class="btn waves-effect waves-light" id="submit_btn_bin" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
-                        </button>
+                        </button></div>
                         <p id="error_message_binary" class="text-danger h5">Invalid input</p>
                     </form>
-                    <button class="waves-effect waves-light btn" id="download_btn_bin"><i class="material-icons right">cloud</i>download</button>
+                    <div class="button_wrapper"><button class="waves-effect waves-light btn" id="download_btn_bin"><i class="material-icons right">cloud</i>download</button></div>
                 
                 </div>
     
@@ -76,21 +76,24 @@
                         </div>
     
                         <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
-                        <button class="btn waves-effect waves-light" id="submit_btn_hex" type="submit" name="action">Submit
+                        <div class="button_wrapper"><button class="btn waves-effect waves-light" id="submit_btn_hex" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
-                          </button>
+                          </button> </div>
                         <p id="error_message_hex" class="text-danger h5">Invalid input</p>
                     </form>
-                    <button class="waves-effect waves-light btn" id="download_btn_hex"><i class="material-icons right">cloud</i>download</button>
+                    <div class="button_wrapper"><button class="waves-effect waves-light btn" id="download_btn_hex"><i class="material-icons right">cloud</i>download</button></div>
                 </div>
             </div>
             
-        
-        
-        <div class="outputdiv" style="margin-top: 25px;">
-            <label class="labels" for="output" style="font-weight: bold;">Decimal 32 Floating Point</label>
-            <p id="output">0</p>
         </div>
+        
+        <div class="container">
+            <div class="outputdiv">
+                <label class="labels" for="output" style="font-weight: bold;">Decimal 32 Floating Point</label>
+                <p id="output">0</p>
+            </div>
+        </div>
+        
         <script type="text/javascript">
             let download_btn = document.getElementById('download_btn_bin');
             download_btn.onclick = function(){
