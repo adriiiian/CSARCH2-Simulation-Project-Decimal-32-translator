@@ -1,8 +1,8 @@
 
-const index_controller = {
+const main_controller = {
     viewIndex: (req, res) => {
         res.render('index')
     }
 }
 
-module.exports = index_controller
+module.exports = main_controller
