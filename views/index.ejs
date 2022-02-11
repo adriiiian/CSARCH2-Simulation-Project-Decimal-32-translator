@@ -6,10 +6,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>Hello World Simple App</title>
         <script src="./js/index.js"></script>
+        <script src="./js/FileSaver.js"></script>
         
     </head>
     <body>
-        <div class="inputdiv">
+        <div id="32bitdiv"class="inputdiv">
             <form id="form_binary" onsubmit="return false;" autocomplete="off">
                 <div class="inputdiv">
                     <label class="labels" for="input_sb">Sign Bit</label>
@@ -41,10 +42,27 @@
 
                 <p id="error_message" class="text-danger h5">Invalid input</p>
             </form>
+            <button id="download_btn">download</button>
         </div>
         <div class="outputdiv" style="margin-top: 25px;">
             <label class="labels" for="output" style="font-weight: bold;">Decimal 32 Floating Point</label>
             <p id="output">0</p>
         </div>
+        <script type="text/javascript">
+            download_btn.onclick = function(){
+                let download_btn = document.getElementById('download_btn');
+                let bit32div = document.getElementById('32bitdiv');
+                let signbit = $('#input_sb').val();
+                let combifield = $('#input_cf').val();
+                let expocont = $('#input_ec').val();
+                let coefcont1 = $('#input_cc1').val();
+                let coefcont2 = $('#input_cc2').val();
+                let output = $('#output').val();
+                var blob = new Blob(["32-bit binary input to Decimal 32 floating point", "\n\n", "Sign bit: " + signbit, "\n", "Combination Field: " + combifield
+            , "\n", "Exponeent Continuation: " + expocont, "\n", "Coefficient Continuation 1: " + coefcont1, "\n", "Coefficient Continuation 2: " + coefcont2,
+            "\n\n", "Decimal 32 Floating Point: " + output], {type: 'text/plain;charset=utf-8'});
+                saveAs(blob, "decimal-32-floating-point-translator.txt");
+            }
+        </script>
     </body>
 </html>

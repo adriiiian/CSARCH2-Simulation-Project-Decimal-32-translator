@@ -78,6 +78,7 @@ $(document).ready(function(){
                     final = final / 1000;
                 }
                 $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
+                $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^" + exp);
             }
         }
 
