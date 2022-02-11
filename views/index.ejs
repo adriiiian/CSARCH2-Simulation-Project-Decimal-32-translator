@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="./css/index_css.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Hello World Simple App</title>
         <script src="./js/index.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -22,13 +23,12 @@
         <div class="container pt-5 pb-4">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="bittab" data-toggle="tab" href="#bitdiv" role="tab" aria-controls="bitdiv" aria-selected="true">32-Bit Binary Input</a>
-                    <a class="nav-item nav-link" id="hextab" data-toggle="tab" href="#hexdiv" role="tab" aria-controls="hexdiv" aria-selected="false">8-Digit Hex Input</a>
+                    <a class="nav-item nav-link active" id="bit-tab" data-toggle="tab" onclick="bit32();" role="tab" aria-controls="bit-div" aria-selected="true">32-Bit Binary Input</a>
+                    <a class="nav-item nav-link" id="hex-tab" data-toggle="tab" onclick="hex8()" role="tab" aria-controls="hex-div" aria-selected="false">8-Digit Hex Input</a>
                 </div>
             </nav>
             <div class="tab-content py-4" id="nav-tabContent">
-                <div class="tab-content py-4" id="bitdiv" role="tabpanel" aria-labelledby="bittab">
-                
+                <div class="tab-pane fade show active" id="bit-div" role="tabpanel" aria-labelledby="bit-tab">
                     <form id="form_binary" onsubmit="return false;" autocomplete="off">
                         <div class="inputdiv">
                             <label class="labels" for="input_sb">Sign Bit</label>
@@ -59,14 +59,14 @@
                         <!-- <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Calculate<i class="material-icons right">send</i></button> -->
                         <button class="btn waves-effect waves-light" id="submit_btn_bin" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
-                          </button>
+                        </button>
                         <p id="error_message_binary" class="text-danger h5">Invalid input</p>
                     </form>
                     <button class="waves-effect waves-light btn" id="download_btn_bin"><i class="material-icons right">cloud</i>download</button>
                 
                 </div>
     
-                <div class="tab-pane fade" id="hexdiv" role="tabpanel" aria-labelledby="hextab">
+                <div class="tab-pane fade" id="hex-div" role="tabpanel" aria-labelledby="hex-tab">
                     
                     <form id="form_hex" onsubmit="return false;" autocomplete="off">
                         <div class="inputdiv">
@@ -95,7 +95,7 @@
             let download_btn = document.getElementById('download_btn_bin');
             download_btn.onclick = function(){
                 
-                let bit32div = document.getElementById('32bitdiv');
+                let bit32div = document.getElementById('bitdiv');
                 let signbit = $('#input_sb').val();
                 let combifield = $('#input_cf').val();
                 let expocont = $('#input_ec').val();
@@ -106,6 +106,44 @@
             , "\n", "Exponeent Continuation: " + expocont, "\n", "Coefficient Continuation 1: " + coefcont1, "\n", "Coefficient Continuation 2: " + coefcont2,
             "\n\n", "Decimal 32 Floating Point: " + output], {type: 'text/plain;charset=utf-8'});
                 saveAs(blob, "decimal-32-floating-point-translator.txt");
+            }
+
+            function bit32(){
+                let bittab = $('#bit-tab');
+                let hextab = $('#hex-tab');
+                let bitdiv = $('#bit-div');
+                let hexdiv = $('#hex-div');
+                if(!bittab.hasClass('active')){
+                    bittab.addClass("active");
+                }
+                if(hextab.hasClass('active')){
+                    hextab.removeClass('active');
+                }
+                if(!bitdiv.hasClass('show active')){
+                    bitdiv.addClass('show active');
+                }
+                if(hexdiv.hasClass('show active')){
+                    hexdiv.removeClass('show active');
+                }
+            }
+
+            function hex8(){
+                let bittab = $('#bit-tab');
+                let hextab = $('#hex-tab');
+                let bitdiv = $('#bit-div');
+                let hexdiv = $('#hex-div');
+                if(!hextab.hasClass('active')){
+                    hextab.addClass("active");
+                }
+                if(bittab.hasClass('active')){
+                    bittab.removeClass('active');
+                }
+                if(!hexdiv.hasClass('show active')){
+                    hexdiv.addClass('show active');
+                }
+                if(bitdiv.hasClass('show active')){
+                    bitdiv.removeClass('show active');
+                }
             }
         </script>
     </body>
