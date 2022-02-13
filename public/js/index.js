@@ -58,10 +58,6 @@ $(document).ready(function(){
                     coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
                     coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
                     final = msd + coefcont1 + coefcont2;
-                    // console.log(msd);
-                    // console.log(exp);
-                    // console.log(coefcont1 / 1000);
-                    // console.log(coefcont2);
                 }
                 else{
                     msd = parseInt((formInfo.CombinationField % 1000), 2) * 1000000;
@@ -69,22 +65,12 @@ $(document).ready(function(){
                     coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
                     coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
                     final = msd + coefcont1 + coefcont2;
-                    // console.log(msd);
-                    // console.log(exp);
-                    // console.log(coefcont1 / 1000);
-                    // console.log(coefcont2);
                 }
 
                 if(formInfo.Signbit == 1){
                     final = final * -1;
                 }
 
-                // if(coefcont1 == 0 && coefcont2 == 0){
-                //     final = final / 1000000;
-                // }
-                // else if(coefcont2 == 0){
-                //     final = final / 1000;
-                // }
                 $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
                 $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
                 $('#output_format').val(1);
@@ -112,7 +98,6 @@ $(document).ready(function(){
             for(let i = 0; i < hex.length; i++){
                 atemp[i] = parseInt(hex[i], 16).toString(2);
             }
-            // console.log(atemp)
             getBinaryInputs()
         }
 
@@ -147,31 +132,19 @@ $(document).ready(function(){
                     coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
                     coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
                     final = msd + coefcont1 + coefcont2;
-                    // console.log(msd);
-                    // console.log(exp);
-                    // console.log(coefcont1 / 1000);
-                    // console.log(coefcont2);
                 }
                 else{
-                    // console.log(parseInt(formInfo.CombinationField) / 1000);
                     msd = parseInt((formInfo.CombinationField % 1000), 2) * 1000000;
                     exp = parseInt((Math.floor(formInfo.CombinationField / 1000) * 1000000 + formInfo.ExponentContinuation), 2) - 101;
                     coefcont1 = getDecPackedBCD(formInfo.CoefficientContinuation1) * 1000;
                     coefcont2 = getDecPackedBCD(formInfo.CoefficientContinuation2);
                     final = msd + coefcont1 + coefcont2;
-                    console.log(final);
                 }
 
                 if(formInfo.Signbit == 1){
                     final = final * -1;
                 }
 
-                // if(coefcont1 == 0 && coefcont2 == 0){
-                //     final = final / 1000000;
-                // }
-                // else if(coefcont2 == 0){
-                //     final = final / 1000;
-                // }
                 $('#output').text((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
                 $('#output').val((final.toFixed(2)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " x 10 ^ " + exp);
                 $('#output_format').val(1);
