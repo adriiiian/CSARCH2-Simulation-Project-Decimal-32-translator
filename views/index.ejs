@@ -158,12 +158,10 @@
                 exptemp = exptemp.toString().split(' ^ ')[1];
                 let i;
                 let exptemp2 = outtemp.toString().length - 1;
-                console.log(outtemp)
-                console.log(outtemp.toString().length);
-                for(i = 0; i < exptemp2; i++){
-                    outtemp /= Math.pow(10, exptemp2)
-                    console.log(outtemp);
-                }
+ 
+                // gets the floating point value (1.f)
+                outtemp /= Math.pow(10, exptemp2);
+                
                 outtemp = outtemp.toString().split('e-')[0];
                 outtemp = parseFloat(outtemp).toFixed(exptemp2);
                 exptemp = parseInt(exptemp) + exptemp2;
