@@ -152,24 +152,28 @@
                 outtemp = parseInt(outtemp.toString().split(' x ')[0].replace(/,/g, ''));
                 if(outtemp < 0){
                     booltemp = false;
-                    Math.abs(outtemp);
+                    outtemp = Math.abs(outtemp);
                 }
                 let exptemp = $('#output').text();
                 exptemp = exptemp.toString().split(' ^ ')[1];
                 let i;
                 let exptemp2 = outtemp.toString().length - 1;
-                for(i = 0; i < outtemp.toString().length; i++){
-                    outtemp = outtemp / 10;
+                console.log(outtemp)
+                console.log(outtemp.toString().length);
+                for(i = 0; i < exptemp2; i++){
+                    outtemp /= Math.pow(10, exptemp2)
+                    console.log(outtemp);
                 }
                 outtemp = outtemp.toString().split('e-')[0];
-                outtemp = parseFloat(outtemp);
+                outtemp = parseFloat(outtemp).toFixed(exptemp2);
                 exptemp = parseInt(exptemp) + exptemp2;
+                
                 let output = $('#output');
                 if(booltemp){
                     output.text(outtemp + " x 10 ^ " + exptemp);
                 }
                 else{
-                    output.text(outtemp + " x 10 ^ " + (exptemp - 1));
+                    output.text("-" + outtemp + " x 10 ^ " + (exptemp));
                 }
                 
             }
