@@ -36,9 +36,14 @@ $(document).ready(function(){
             $('#error_message_binary').hide();
             /* Infinity if Combination Field is equal to 11110 - Special case*/
             if(formInfo.CombinationField == "11110"){
-                $('#output').text("Infinity");
+                if(formInfo.Signbit == 0){
+                    $('#output').text("Infinity");
+                }
+                else{
+                    $('#output').text("-Infinity");
+                }
             }
-            /* NaN if Combination Field is equal to 11111 - Special case*/
+            /* NaN if Combination Field is equal to 11111 - Special case */
             else if(formInfo.CombinationField == "11111"){
                 $('#output').text("NaN");
             }
@@ -108,11 +113,16 @@ $(document).ready(function(){
             formInfo.CoefficientContinuation1 = ((atemp[3] * 1000000)) + (atemp[4] * 100) + Math.floor(atemp[5] / 100);
             formInfo.CoefficientContinuation2 = ((atemp[5] % 100) * 100000000) + (atemp[6] * 10000) + Math.floor(atemp[7]);
 
-            /* Infinity if Combination Field is equal to 11110 - Special case*/
+            /* Infinity if Combination Field is equal to 11110 - Special case */
             if(formInfo.CombinationField == "11110"){
-                $('#output').text("Infinity");
+                if(formInfo.Signbit == 0){
+                    $('#output').text("Infinity");
+                }
+                else{
+                    $('#output').text("-Infinity");
+                }
             }
-            /* NaN if Combination Field is equal to 11111 - Special case*/
+            /* NaN if Combination Field is equal to 11111 - Special case */
             else if(formInfo.CombinationField == "11111"){
                 $('#output').text("NaN");
             }
